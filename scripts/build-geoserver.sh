@@ -7,12 +7,12 @@ PORT=9400
 # update packages
 echo "Update packages..."
 sleep 3s
-sudo yum update -y
+sudo yum -y update
 
 # download latest epel release
 echo "Install latest EPEL release"
 sleep 3s
-sudo yum install epel-release -y
+sudo yum -y install epel-release
 
 # download geoserver source code
 echo "Download GeoServer source code"
@@ -22,7 +22,7 @@ wget $GEOSERVER_URL
 echo "Unpack GeoServer"
 sleep 3s
 unzip $GEOSERVER_VER-bin.zip
-sudo mv $GEOSERVER_VER-bin /usr/local/
+sudo mv $GEOSERVER_VER /usr/local/
 sudo chown $USER /usr/local/$GEOSERVER_VER
 echo "export GEOSERVER_HOME=/usr/local/$GEOSERVER_VER" >> .bashrc
 source ~/.bashrc
