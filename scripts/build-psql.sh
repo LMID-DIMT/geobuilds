@@ -2,16 +2,6 @@
 
 PGIS_URL=https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpm
 
-# update packages
-echo "Update packages..."
-sleep 3s
-sudo yum -y update
-
-# download latest epel release
-echo "Install latest EPEL release"
-sleep 3s
-sudo yum -y install epel-release
-
 # download postgresql 10 rpm
 echo "Download PostgreSQL 10 RPM"
 sleep 3s
