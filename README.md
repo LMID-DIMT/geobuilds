@@ -80,7 +80,13 @@ There are 2 programs which provide 'java'.
 *+ 1           java-1.8.0-openjdk.x86_64 (/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.131-11.b12.el7.x86_64/jre/bin/java)
    2           /usr/java/jdk1.8.0_191-amd64/jre/bin/java
 
-Enter to keep the current selection[+], or type selection number:
+Enter to keep the current selection[+], or type selection number: 2
+
+$ java -version
+
+java version "1.8.0_191"
+Java(TM) SE Runtime Environment (build 1.8.0_191-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.191-b12, mixed mode)
 ```
 
 ## /service
@@ -92,5 +98,24 @@ A service file which will allow you to `start, stop, restart` and check the `sta
 ```
 $ sudo mv service/geoserver /etc/init.d/
 $ sudo chmod +x /etc/init.d/geoserver
-$ sudo service geoserver { start | stop | restart | status }
+$ sudo service geoserver start
+
+Starting geoserver…
+geoserver is started
+
+$ sudo service geoserver stop
+
+Stopping geoserver…
+8449
+geoserver has stopped
+
+$ sudo service geoserver restart
+
+geoserver is not running
+Starting geoserver…
+geoserver is started
+
+$ sudo service geoserver status
+
+Checking geoserver...                             geoserver is running
 ```
