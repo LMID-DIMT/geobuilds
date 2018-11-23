@@ -25,6 +25,8 @@ PSQL_LOC=/usr/pgsql-11
 
 #### Get Started
 ```
+$ sudo yum install epel-release
+$ sudo yum update
 $ cd scripts
 $ sudo chmod +x build-pgsql.sh
 $ ./build-pgsql.sh
@@ -57,6 +59,8 @@ PORT=9400
 
 #### Get Started
 ```
+$ sudo yum install epel-release
+$ sudo yum update
 $ cd scripts
 $ sudo chmod +x build-geoserver.sh
 $ ./build-geoserver.sh

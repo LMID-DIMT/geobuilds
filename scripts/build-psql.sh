@@ -7,6 +7,7 @@ PSQL_URL=https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/p
 PSQL_RPM=pgdg-centos10-10-2.noarch.rpm
 
 PSQL_VER=postgresql10
+PSQL_EN=postgresql-10
 PGIS_VER=postgis24_10
 PGRT_VER=pgrouting_10
 
@@ -26,19 +27,19 @@ sudo yum -y install $PSQL_VER $PSQL_VER-server $PSQL_VER-contrib $PGIS_VER $PGIS
 # enable postgresql
 echo "Enable PostgreSQL"
 sleep 3s
-sudo systemctl enable $PSQL_VER
+sudo systemctl enable $PSQL_EN
 
 # initialize postgresql database
 echo "Initialize PostgreSQL database"
 sleep 3s
-sudo $PSQL_LOC/bin/$PSQL_VER-setup initdb
+sudo $PSQL_LOC/bin/$PSQL_EN-setup initdb
 
 # start postgresql service
 echo "Start PostgreSQL"
 sleep 3s
-sudo systemctl start $PSQL_VER.service
+sudo systemctl start $PSQL_EN.service
 
 # make sure postgresql start on machine startup
 echo "Enable PostgreSQL on machine startup"
 sleep 3s
-sudo systemctl enable $PSQL_VER.service
+sudo systemctl enable $PSQL_EN.service
