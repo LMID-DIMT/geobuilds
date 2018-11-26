@@ -100,8 +100,8 @@ A series of CentOS service files to easily manage OSGeo projects.
 A service file which will allow you to `start, stop, restart` and check the `status` of your new GeoServer instance.
 
 ```
-$ sudo mv service/geoserver /etc/init.d/
-$ sudo chmod +x /etc/init.d/geoserver
+$ sudo cp service/geoserver /etc/init.d/
+$ sudo chmod +x /etc/init.d/geoserver/
 $ sudo service geoserver start
 
 Starting geoserver…

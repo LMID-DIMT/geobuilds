@@ -4,7 +4,7 @@
 # set Java variables
 # alternative Java version downloads can be found here https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 JAVA_URL=https://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/jdk-8u191-linux-x64.tar.gz
-JAVA_HOME=/usr/local/jdk1.8.0_191
+JAVA_DIR=jdk1.8.0_191
 JAVA_TAR=jdk-8u191-linux-x64.tar.gz
 
 # set GeoServer variables
@@ -16,10 +16,11 @@ PORT=9400
 echo "Install Oracle Java 8 JDK"
 sleep 3s
 sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "$JAVA_URL" -P /usr/local/
-sudo tar xzf /usr/local/$JAVA_TAR
-echo "export JAVA_HOME=$JAVA_HOME/
-      export JRE_HOME=$JAVA_HOME/jre/
-      export PATH=$PATH:$JAVA_HOME/bin/:$JAVA_HOME/jre/bin/" >> ~/.bashrc
+sudo tar xzf $JAVA_TAR
+sudo mv $JAVA_DIR /usr/local/
+echo "export JAVA_HOME=/usr/local/$JAVA_DIR/
+      export JRE_HOME=/usr/local/$JAVA_DIR/jre/
+      export PATH=$PATH:/usr/local/$JAVA_DIR/bin/:/usr/local/$JAVA_DIR/jre/bin/" >> ~/.bashrc
 source ~/.bashrc
 
 # download geoserver source code
