@@ -3,14 +3,14 @@
 *In development*
 
 ## /scripts
-A series of bash scripts that will install OSGeo projects (PostgreSQL/PostGIS, GeoServer) on a fresh CentOS 7 install.
+A series of shell scripts that will install OSGeo projects (PostgreSQL/PostGIS, GeoServer) on a fresh CentOS 7 install.
 
 ### build-pgsql.sh
-This bash script will install PostgreSQL 10 along with spatial extensions PostGIS and Pgrouting.
+This shell script will install PostgreSQL 10 along with spatial extensions PostGIS and Pgrouting.
 
 Alternative version options for [PostgreSQL](https://download.postgresql.org/pub/repos/yum/).
 
-If you plan on using an alternative PostgreSQL version, be sure to edit the bash script variables appropriately. For example, if you decide to use PostgreSQL 11 rather than 10...
+If you plan on using an alternative PostgreSQL version, be sure to edit the shell script variables appropriately. For example, if you decide to use PostgreSQL 11 rather than 10...
 
 ```
 PSQL_URL=https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/pgdg-centos11-11-2.noarch.rpm
@@ -29,8 +29,9 @@ $ sudo yum install epel-release
 $ sudo yum update
 $ cd scripts
 $ sudo chmod +x build-pgsql.sh
-$ ./build-pgsql.sh
+$ sudo ./build-pgsql.sh
 ```
+Usually running shell scripts with `sudo` is not recommended, [however there are proper ways of doing this](https://bitmingw.com/2017/01/22/use-sudo-in-scripts/).
 
 #### Upon Completion
 Check PostgreSQL version.
@@ -41,11 +42,11 @@ psql (PostgreSQL) 10.6
 ```
 
 ### build-geoserver.sh
-This bash script will install Oracle Java 8 JDK and GeoServer
+This shell script will install Oracle Java 8 JDK and GeoServer
 
 Alternative version options for [Oracle Java JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and [GeoServer](https://sourceforge.net/projects/geoserver/files/).
 
-If you plan on using alternative Oracle Java JDK and GeoServer versions, be sure to edit the bash script variables appropriately. However, Oracle Java 8 JDK and GeoServer 2.13.0 are compatible with one another.
+If you plan on using alternative Oracle Java JDK and GeoServer versions, be sure to edit the shell script variables appropriately. However, Oracle Java 8 JDK and GeoServer 2.13.0 are compatible with one another.
 
 ```
 JAVA_URL=https://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/jdk-8u191-linux-x64.tar.gz
@@ -63,11 +64,12 @@ $ sudo yum install epel-release
 $ sudo yum update
 $ cd scripts
 $ sudo chmod +x build-geoserver.sh
-$ ./build-geoserver.sh
+$ sudo ./build-geoserver.sh
 ```
+Usually running shell scripts with `sudo` is not recommended, [however there are proper ways of doing this](https://bitmingw.com/2017/01/22/use-sudo-in-scripts/).
 
 #### Upon Completion
-Once the bash script has completed, open a web browser and type `http://localhost:9400/geoserver/web` to view the GeoServer administrative interface.
+Once the shell script has completed, open a web browser and type `http://localhost:9400/geoserver/web` to view the GeoServer administrative interface.
 
 Use the `alternatives` command to set the default Java version.
 

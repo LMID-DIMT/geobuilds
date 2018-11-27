@@ -15,9 +15,9 @@ PORT=9400
 # install Oracle Java 8 JDK and set the home directories in ~/.bashrc
 echo "Install Oracle Java 8 JDK"
 sleep 3s
-sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "$JAVA_URL" -P /usr/local/
-sudo tar xzf $JAVA_TAR
-sudo mv $JAVA_DIR /usr/local/
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "$JAVA_URL" -P /usr/local/
+tar xzf $JAVA_TAR
+mv $JAVA_DIR /usr/local/
 echo "export JAVA_HOME=/usr/local/$JAVA_DIR/
       export JRE_HOME=/usr/local/$JAVA_DIR/jre/
       export PATH=$PATH:/usr/local/$JAVA_DIR/bin/:/usr/local/$JAVA_DIR/jre/bin/" >> ~/.bashrc
@@ -33,21 +33,21 @@ echo "Unpack GeoServer"
 sleep 3s
 unzip $GEOSERVER_VER-bin.zip
 mv $GEOSERVER_VER geoserver
-sudo mv geoserver /usr/local/
-sudo chown $USER /usr/local/geoserver/
+mv geoserver /usr/local/
+chown $USER /usr/local/geoserver/
 echo "export GEOSERVER_HOME=/usr/local/geoserver/" >> ~/.bashrc
 source ~/.bashrc
 
 # set the GeoServer port number and enable it through firewalld
 echo "Set GeoServer port number"
 sleep 3s
-sudo sed -i "s/jetty.port=8080/jetty.port=$PORT/g" /usr/local/geoserver/start.ini
-sudo systemctl restart firewalld.service
-sudo firewall-cmd --permanent --add-port=$PORT/tcp
-sudo firewall-cmd --reload
+sed -i "s/jetty.port=8080/jetty.port=$PORT/g" /usr/local/geoserver/start.ini
+systemctl restart firewalld.service
+firewall-cmd --permanent --add-port=$PORT/tcp
+firewall-cmd --reload
 
 # check to see if GeoServer starts
 echo "Start GeoServer"
 sleep 3s
-sudo chmod +x /usr/local/geoserver/bin/startup.sh
+chmod +x /usr/local/geoserver/bin/startup.sh
 /usr/local/geoserver/bin/startup.sh

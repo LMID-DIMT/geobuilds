@@ -17,29 +17,29 @@ PSQL_LOC=/usr/pgsql-10
 echo "Download PostgreSQL 10 RPM"
 sleep 3s
 wget $PSQL_URL
-sudo rpm -Uvh $PSQL_RPM
+rpm -Uvh $PSQL_RPM
 
 # install postgresql, postgis, pgrouting
 echo "Install PostgreSQL, PostGIS and Pgrouting"
 sleep 3s
-sudo yum -y install $PSQL_VER $PSQL_VER-server $PSQL_VER-contrib $PGIS_VER $PGIS_VER-utils $PGRT_VER
+yum -y install $PSQL_VER $PSQL_VER-server $PSQL_VER-contrib $PGIS_VER $PGIS_VER-utils $PGRT_VER
 
 # enable postgresql
 echo "Enable PostgreSQL"
 sleep 3s
-sudo systemctl enable $PSQL_EN
+systemctl enable $PSQL_EN
 
 # initialize postgresql database
 echo "Initialize PostgreSQL database"
 sleep 3s
-sudo $PSQL_LOC/bin/$PSQL_EN-setup initdb
+$PSQL_LOC/bin/$PSQL_EN-setup initdb
 
 # start postgresql service
 echo "Start PostgreSQL"
 sleep 3s
-sudo systemctl start $PSQL_EN.service
+systemctl start $PSQL_EN.service
 
 # make sure postgresql start on machine startup
 echo "Enable PostgreSQL on machine startup"
 sleep 3s
-sudo systemctl enable $PSQL_EN.service
+systemctl enable $PSQL_EN.service
