@@ -1,16 +1,10 @@
 # geobuilds
 
-*In development*
-
-## /scripts
-
-A series of shell scripts that will install OSGeo projects (PostgreSQL/PostGIS, GeoServer) on a fresh CentOS 7 install.
-
 ### Prerequisites
 
 Install epel-release for CentOS 7 and update packages.
 
-```
+``` console
 $ sudo yum install epel-release
 $ sudo yum update
 $ sudo yum install wget nano git unzip
@@ -18,9 +12,14 @@ $ sudo yum install wget nano git unzip
 
 Clone the `geobuilds` repository.
 
-```
+``` console
 $ git clone https://github.com/LMID-DIMT/geobuilds
+$ cd geobuilds
 ```
+
+## /scripts
+
+A series of shell scripts that will install OSGeo projects (PostgreSQL/PostGIS, GeoServer) on a **fresh CentOS 7** install.
 
 #### build-pgsql.sh
 
@@ -30,7 +29,7 @@ Alternative version options for [PostgreSQL](https://download.postgresql.org/pub
 
 If you plan on using an alternative PostgreSQL version, be sure to edit the shell script variables appropriately. For example, if you decide to use PostgreSQL 11 rather than 10...
 
-```
+``` console
 PSQL_URL=https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/pgdg-centos11-11-2.noarch.rpm
 PSQL_RPM=pgdg-centos11-11-2.noarch.rpm
 
@@ -43,7 +42,7 @@ PSQL_LOC=/usr/pgsql-11
 
 ##### Get Started
 
-```
+``` console
 $ cd scripts
 $ sudo chmod +x build-pgsql.sh
 $ sudo ./build-pgsql.sh
@@ -55,7 +54,7 @@ Usually running shell scripts with `sudo` is not recommended, [however there are
 
 Check PostgreSQL version.
 
-```
+``` console
 $ psql -V
 psql (PostgreSQL) 10.6
 ```
@@ -69,7 +68,7 @@ Alternative version options for [Oracle Java JDK](https://www.oracle.com/technet
 If you plan on using alternative Oracle Java JDK and GeoServer versions, be sure to edit the shell script variables appropriately. However, Oracle Java 8 JDK and GeoServer 2.13.0 are compatible with one another.
 
 
-```
+``` console
 # set your non-root user
 USER="USERNAME"
 
@@ -87,7 +86,7 @@ PORT=9400
 
 ##### Get Started
 
-```
+``` console
 $ cd scripts
 $ sudo chmod +x bashrc.sh
 $ sudo chmod +x build-geoserver.sh
@@ -100,7 +99,7 @@ Usually running shell scripts with `sudo` is not recommended, [however there are
 
 When the script has completed, `exit` the shell and open a new one. Check Java version.
 
-```
+``` console
 $ java -version
 
 java version "1.8.0_191"
@@ -110,7 +109,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.191-b12, mixed mode)
 
 Start Geoserver.
 
-```
+``` console
 $ /usr/local/geoserver/bin/startup.sh
 ```
 
@@ -122,7 +121,7 @@ A series of CentOS service files to easily manage OSGeo projects.
 
 A service file which will allow you to `start, stop, restart` and check the `status` of your new GeoServer instance.
 
-```
+``` console
 $ sudo cp service/geoserver /etc/init.d/
 $ sudo chmod +x /etc/init.d/geoserver/
 $ sudo service geoserver start
